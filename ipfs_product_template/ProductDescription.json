@@ -1,0 +1,12 @@
+{
+  "Product Type": "Sensor",
+  "Peripheral Sensor": "Temperature Sensor",
+  "Product Description": "TMP36 temperature sensor deployed outdoor.",
+  "Latitude": "34.022596",
+  "Longititude": -118.28443,
+  "Price per Data Unit in USD": 1.5,
+  "Data Unit": "100 data points",
+  "IP Address or Hostname": "xxx-xxx-xxx-xxx",
+  "Public Address": "0x32590bb72050e53df34676f9a75c17a0677866c7",
+  "Seller Credentials": "xxxxxxxxxxxxxxxx"
+}
