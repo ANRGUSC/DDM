@@ -123,6 +123,12 @@ class RegistrationForm extends Component {
                 longitude: e.target.value
             })
         }
+        if (input === 'peripheral_sensor') {
+            this.setState({
+                peripheral_sensor: e.target.value
+            })
+        }
+
         if (input === 'latitude') {
             this.setState({
                 latitude: e.target.value

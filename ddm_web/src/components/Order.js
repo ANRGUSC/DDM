@@ -19,12 +19,13 @@ class Order extends Component {
 
     componentDidMount = ()=>{
         // receive props from the last Component
-        //const JSON_parse = require('uint8array-json-parser').JSON_parse;
-        //const obj = JSON_parse(this.props.location.state.item_object);
-        //console.log(obj);
+        const JSON_parse = require('uint8array-json-parser').JSON_parse;
+        const obj = JSON_parse(this.props.location.state.item_object);
 
-        console.log(this.props.location.state);
-        this.setState({orderDetail: this.props.location.state});
+
+        //console.log(this.props.location.state);
+        this.setState({orderDetail: obj});
+
     }
 
     // 'Buy!' button
@@ -40,8 +41,11 @@ class Order extends Component {
         const quant = this.state.quantity;
         // console.log('quantity is ' + quant);
         // get from input box
-        // const data_type = this.state.orderDetail.Peripheral_Sensor;
-        const data_type = 'gas';
+        console.log('data type is: ' + this.state.orderDetail.Peripheral_Sensor);
+        console.log(typeof this.state.orderDetail.Peripheral_Sensor);
+
+        var data_type = this.state.orderDetail.Peripheral_Sensor; // 坑爹啊！！！！！！！草他妈的！！！！var !!!
+        //const data_type = 'gas';
         const k = 3;
         const data = [];
         const ws = new WebSocket("ws://127.0.0.1:5678/");
@@ -79,7 +83,7 @@ class Order extends Component {
             const arr = [...this.state.details, obj];
             this.setState({details: arr});
             console.log(this.state.details.length);
-            if (this.state.details.length % 4 === 0) {
+            if (this.state.details.length  === this.state.quantity / 3 + 2) {
                 this.setState({
                     iconLoading: false,
                     display: 'Buy Again!'
@@ -120,7 +124,7 @@ class Order extends Component {
                 const arr = [...this.state.details, obj];
                 this.setState({details: arr});
                 console.log(this.state.details.length);
-                if (this.state.details.length % 4=== 0) {
+                if (this.state.details.length === this.state.quantity / 3 + 2) {
                     this.setState({
                         iconLoading: false,
                         display: 'Buy Again!'
@@ -214,7 +218,7 @@ class Order extends Component {
 
         // transaction details
         const columns1 = [{
-            title: 'Description',
+            title: 'Data Flow logs',
             key: 'description',
             dataIndex: 'description'
         }, {

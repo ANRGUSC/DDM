@@ -153,13 +153,13 @@ class QueryProduct extends Component {
                     style={{width: 100}}
                 >
 
-                    {/*<Link to={{pathname: '/order', state: {item_object: this.state.items_object[this.state.selectedIndex]}}}>
-                        Checkout
-                    </Link>*/}
-
-                    <Link to={{pathname: '/order', state: dummyData}}>
+                    <Link to={{pathname: '/order', state: {item_object: this.state.items_object[this.state.selectedIndex]}}}>
                         Checkout
                     </Link>
+
+                    {/*<Link to={{pathname: '/order', state: dummyData}}>*/}
+                        {/*Checkout*/}
+                    {/*</Link>*/}
                 </Button>
             </div>
         );
