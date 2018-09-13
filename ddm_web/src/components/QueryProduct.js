@@ -103,8 +103,25 @@ class QueryProduct extends Component {
         });
     }
 
+
+
+
     render() {
         console.log('render query product');
+
+        const dummyData = {
+            Seller: 'this is Seller',
+            Peripheral_Sensor: 'this is Peripheral_Sensor',
+            Product_Description: 'this is this is product description',
+            Longitude: 'this is Longitude',
+            Latitude: 'this is Latitude',
+            Price_per_Data_Unit_USD: 'this is Price_per_Data_Unit_USD',
+            Data_Unit: 'this is Data_Unit',
+            IP_Address: 'this is IP_Address',
+            Public_Address: 'this is Public_Address',
+            Seller_Credentials: 'this is Seller_Credentials'
+        };
+
         return (
             <div>
                 <br/><br/>
@@ -135,7 +152,12 @@ class QueryProduct extends Component {
                 <Button
                     style={{width: 100}}
                 >
-                    <Link to={{pathname: '/order', state: {item_object: this.state.items_object[this.state.selectedIndex]}}}>
+
+                    {/*<Link to={{pathname: '/order', state: {item_object: this.state.items_object[this.state.selectedIndex]}}}>
+                        Checkout
+                    </Link>*/}
+
+                    <Link to={{pathname: '/order', state: dummyData}}>
                         Checkout
                     </Link>
                 </Button>
