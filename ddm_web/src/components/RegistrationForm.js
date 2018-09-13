@@ -22,7 +22,7 @@ class RegistrationForm extends Component {
         ip_address: '',
         public_address: '',
         data_unit: '',
-        product_type: '',
+        seller: '',
         peripheral_sensor: '',
 
         // ipfs part
@@ -33,6 +33,7 @@ class RegistrationForm extends Component {
         transactionHash: '',
         gasUsed: '',
         txReceipt: ''
+
     };
 
     getHexfromIPFSHash = (ipfsHash) => {
@@ -61,7 +62,7 @@ class RegistrationForm extends Component {
     convertToBuffer = async () => {
         //file is converted to a buffer for upload to IPFS
         const obj = {
-            Product_Type: this.state.product_type,
+            Seller: this.state.seller,
             Peripheral_Sensor: this.state.peripheral_sensor,
             Product_Description: this.state.description,
             Longitude: this.state.longitude,
@@ -152,9 +153,9 @@ class RegistrationForm extends Component {
                 data_unit: e.target.value
             })
         }
-        if (input === 'product_type') {
+        if (input === 'seller') {
             this.setState({
-                product_type: e.target.value
+                seller: e.target.value
             })
         }
         if (input === 'product_sensor') {
@@ -169,15 +170,14 @@ class RegistrationForm extends Component {
 
         const formItemLayout = {
             labelCol: {
-                xs: {span: 24},
-                sm: {span: 8},
+                xs: { span: 24 },
+                sm: { span: 12 },
             },
             wrapperCol: {
-                xs: {span: 24},
-                sm: {span: 16},
+                xs: { span: 24 },
+                sm: { span: 12 },
             },
         };
-
         const tailFormItemLayout = {
             wrapperCol: {
                 xs: {
@@ -199,7 +199,7 @@ class RegistrationForm extends Component {
         const ip_address = 'ip_address';
         const public_address = 'public_address';
         const data_unit = 'data_unit';
-        const product_type = 'product_type';
+        const seller = 'seller';
         const peripheral_sensor = 'peripheral_sensor';
 
         return (
@@ -207,40 +207,28 @@ class RegistrationForm extends Component {
                 className="register-form"
             >
                 <FormItem
-                    label={(
-                        <span>
-                            Type&nbsp;
-                        </span>
-                    )}
+                    label='Type'
                     {...formItemLayout}
                 >
                     <Select
                         defaultValue="SDPP"
-                        style={{ width: 200}}
+                        style={{ width: 150}}
                     >
                         <Option value="others">OTHER</Option>
                         <Option value="SDPP">SDPP</Option>
                     </Select>
                 </FormItem>
                 <FormItem
-                    label={(
-                        <span>
-                            Product Type&nbsp;
-                        </span>
-                    )}
+                    label= 'Seller'
                     {...formItemLayout}
                 >
                     <Input
-                        value={this.state.product_type}
-                        onChange={this.handleInputChange.bind(this, product_type)}
+                        value={this.state.seller}
+                        onChange={this.handleInputChange.bind(this, seller)}
                     />
                 </FormItem>
                 <FormItem
-                    label={(
-                        <span>
-                            Product Sensor&nbsp;
-                        </span>
-                    )}
+                    label='Peripheral Sensor'
                     {...formItemLayout}
                 >
                     <Input
@@ -249,11 +237,7 @@ class RegistrationForm extends Component {
                     />
                 </FormItem>
                 <FormItem
-                    label={(
-                        <span>
-                            Description&nbsp;
-                        </span>
-                    )}
+                    label='Description'
                     {...formItemLayout}
                 >
                     <Input
@@ -262,11 +246,7 @@ class RegistrationForm extends Component {
                     />
                 </FormItem>
                 <FormItem
-                    label={(
-                        <span>
-                            Longitude&nbsp;
-                        </span>
-                    )}
+                    label='Longitude'
                     {...formItemLayout}
                 >
                     <Input
@@ -275,11 +255,7 @@ class RegistrationForm extends Component {
                     />
                 </FormItem>
                 <FormItem
-                    label={(
-                        <span>
-                            Latitude&nbsp;
-                        </span>
-                    )}
+                    label='Latitude'
                     {...formItemLayout}
                 >
                     <Input
@@ -288,11 +264,7 @@ class RegistrationForm extends Component {
                     />
                 </FormItem>
                 <FormItem
-                    label={(
-                        <span>
-                            Price per Data Unit in USD&nbsp;
-                        </span>
-                    )}
+                    label='Price in USD'
                     {...formItemLayout}
                 >
                     <Input
@@ -301,11 +273,7 @@ class RegistrationForm extends Component {
                     />
                 </FormItem>
                 <FormItem
-                    label={(
-                        <span>
-                            Data Unit&nbsp;
-                        </span>
-                    )}
+                    label='Max Data Unit'
                     {...formItemLayout}
                 >
                     <Input
@@ -314,11 +282,7 @@ class RegistrationForm extends Component {
                     />
                 </FormItem>
                 <FormItem
-                    label={(
-                        <span>
-                            IP Address&nbsp;
-                        </span>
-                    )}
+                    label='IP Address'
                     {...formItemLayout}
                 >
                     <Input
@@ -328,11 +292,7 @@ class RegistrationForm extends Component {
                 </FormItem>
 
                 <FormItem
-                    label={(
-                        <span>
-                            Public Address&nbsp;
-                        </span>
-                    )}
+                    label='Public Address'
                     {...formItemLayout}
                 >
                     <Input
@@ -342,11 +302,7 @@ class RegistrationForm extends Component {
                 </FormItem>
 
                 <FormItem
-                    label={(
-                        <span>
-                            Seller Credentials&nbsp;
-                        </span>
-                    )}
+                    label='Seller Credentials'
                     {...formItemLayout}
                 >
                     <Input

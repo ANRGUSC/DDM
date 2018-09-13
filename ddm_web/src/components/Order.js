@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Form, Input, InputNumber} from "antd";
+import {Button, Form, Input, InputNumber, Table, Tag } from "antd";
 import IOTA from "iota.lib.js";
 import {saveAs} from "file-saver";
 
@@ -14,7 +14,8 @@ class Order extends Component {
 
         iconLoading: false,
         display: 'Buy!'
-    };
+    }
+
 
     componentDidMount = ()=>{
         // receive props from the last Component
@@ -30,18 +31,18 @@ class Order extends Component {
         this.sdppStart();
     }
 
+    // FROM Rahul
     sdppStart = () => {
         // get from ethereum
         //const quant = 7;
         const quant = this.state.quantity;
         console.log('quantity is ' + quant);
-
         const data_type = "gas";
         const k = 3;
         const data = [];
         const ws = new WebSocket("ws://127.0.0.1:5678/");
 
-        this.sendTransaction('Order Placed');
+        this.send1('Order Placed');
 
         ws.onopen = () => ws.send(JSON.stringify({
             quantity: quant,
@@ -53,7 +54,7 @@ class Order extends Component {
             //console.log(data);
             if (data.length % k === 0) {
                 //do IOTA operation
-                this.sendTransaction('Money paid');
+                this.send1('Money paid');
             }
 
             if (data.length === quant) {
@@ -80,16 +81,14 @@ class Order extends Component {
         }
     };
 
-    sendTransaction=(mess)=> {
+    send1=(mess)=> {
         const iota = new IOTA({
             'provider': 'http://node02.iotatoken.nl:14265'
+            // 'provider' : 'http://node03.iotatoken.nl:15265'
         });
         // get this input from an input text box
         const seed = this.state.seed;
-        console.log("Seed value, " + seed);
-
         //const seed = 'RAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHUL9RAHUL';
-
         const depth = 2;
         const minWeightMagnitude = 14;
         const transaction = {
@@ -99,7 +98,6 @@ class Order extends Component {
             message: iota.utils.toTrytes(mess),
             tag: 'SDPPBUYER'
         };
-
         const transfers = [transaction];
         iota.api.sendTransfer(seed, depth, minWeightMagnitude, transfers, (error, success) => {
             if (error) {
@@ -172,7 +170,7 @@ class Order extends Component {
                     <FormItem
                     >
                         <div>
-                            Product_Type: {this.state.orderDetail.Product_Type},
+                            Seller: {this.state.orderDetail.Seller},
                         </div>
                         <div>
                             Peripheral_Sensor: {this.state.orderDetail.Peripheral_Sensor},

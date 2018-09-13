@@ -19,6 +19,7 @@ class QueryProduct extends Component {
         selectedIndex: null
     };
 
+    // from Rahul
     handleOnClick = () => {
         const products_description = []; // array of String
         const products_object = []; // array of Object
@@ -62,10 +63,27 @@ class QueryProduct extends Component {
 
     getItems = () => {
         // map all the element in items_string to a new array
-        const items = this.state.items_string.map((item, index) => {
+        const items = this.state.items_object.map((item, index) => {
+
+
+            const JSON_parse = require('uint8array-json-parser').JSON_parse;
+            const obj = JSON_parse(item);
+
+            const newObj = {
+                Seller: obj.Seller,
+                Peripheral_Sensor: obj.Peripheral_Sensor,
+                Product_Description: obj.Product_Description,
+                Price_In_USD: obj.Price_per_Data_Unit_USD,
+                Max_Data_Unit: obj.Data_Unit,
+                //test_field: obj.latitude
+
+            };
+
+            console.log(newObj);
+
             return (
                 <Item
-                    content={item}
+                    content={JSON.stringify(newObj)}
                     index={index}
                 />
             )

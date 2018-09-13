@@ -4,8 +4,9 @@ class Home extends Component {
     render() {
         return (
             <div>
-                home
+                Description to be added!
             </div>
+
         );
     }
 }
