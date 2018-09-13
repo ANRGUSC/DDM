@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Radio, Select} from 'antd';
+import {Button, Radio, Select, Table} from 'antd';
 import Item from "./Item";
 import storehash from "./storehash";
 import ipfs from "./ipfs";
@@ -15,14 +15,16 @@ class QueryProduct extends Component {
     state = {
         searchTag: '',
         items_string: [],
-        items_object: [],
-        selectedIndex: null
+        items_object: [], // uint8array
+        items_object_json: [], // JSON array
+        selectedIndex: 0
     };
 
     // from Rahul
     handleOnClick = () => {
         const products_description = []; // array of String
         const products_object = []; // array of Object
+        const products_object_json = []; // array of object in JSON
 
         const account = web3.eth.accounts.privateKeyToAccount('0xC89ADA337DCDD9D9D092D582104064554DDC3A835B0D164B82E304F0DFC5F0FC');
         web3.eth.accounts.wallet.add(account);
@@ -42,15 +44,23 @@ class QueryProduct extends Component {
                         } else {
                             for (let i = 0; i < files.length; i++) {
                                 console.log("---------------Data Product---------------------");
-                                let product_description = files[i].content.toString('utf8');
-                                let product_object = files[i].content;
+                                const product_description = files[i].content.toString('utf8');
+                                const product_object = files[i].content;
+                                const JSON_parse = require('uint8array-json-parser').JSON_parse;
+                                let product_object_json = JSON_parse(product_object);
+
+                                product_object_json = Object.assign(product_object_json, {key: this.state.items_object.length});
 
                                 console.log(product_description);
                                 products_description.push(product_description);
                                 products_object.push(product_object);
+                                products_object_json.push(product_object_json);
+
+                                console.log(product_object_json);
                                 this.setState(() => ({
                                     items_string: products_description,
-                                    items_object: products_object
+                                    items_object: products_object,
+                                    items_object_json: products_object_json
                                 }));
                                 console.log("------------------------------------------------");
                             }
@@ -122,6 +132,50 @@ class QueryProduct extends Component {
             Seller_Credentials: 'this is Seller_Credentials'
         };
 
+        // rowSelection object indicates the need for row selection
+        const rowSelection = {
+            onChange: (selectedRowKeys, selectedRows) => {
+                console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+                this.setState({selectedIndex: selectedRowKeys[0]});
+            },
+            type: 'radio'
+        };
+
+        const columns = [{
+            title: 'Seller',
+            dataIndex: 'Seller',
+        }, {
+            title: 'Peripheral Sensor',
+            dataIndex: 'Peripheral_Sensor',
+        }, {
+            title: 'Product Description',
+            dataIndex: 'Product_Description',
+        }, {
+            title: 'Price in USD',
+            dataIndex: 'Price_per_Data_Unit_USD',
+        }, {
+            title: 'Max Data Unit',
+            dataIndex: 'Data_Unit',
+        }];
+
+        const data = [{
+            key: '1',
+            name: 'John Brown',
+            age: 32,
+            address: 'New York No. 1 Lake Park',
+        }, {
+            key: '2',
+            name: 'Jim Green',
+            age: 42,
+            address: 'London No. 1 Lake Park',
+        }, {
+            key: '3',
+            name: 'Joe Black',
+            age: 32,
+            address: 'Sidney No. 1 Lake Park',
+        }];
+
+
         return (
             <div>
                 <br/><br/>
@@ -141,14 +195,17 @@ class QueryProduct extends Component {
                 >
                     Search
                 </Button>
-                <div>
-                    <RadioGroup
-                        onChange={this.handleRadioSelection}
-                        value={this.state.selectedIndex}
-                    >
-                        {this.getItems()}
-                    </RadioGroup>
-                </div>
+                {/*<div>*/}
+                    {/*<RadioGroup*/}
+                        {/*onChange={this.handleRadioSelection}*/}
+                        {/*value={this.state.selectedIndex}*/}
+                    {/*>*/}
+                        {/*{this.getItems()}*/}
+                    {/*</RadioGroup>*/}
+                {/*</div>*/}
+                <br/><br/>
+                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.items_object_json}/>
+                <br/><br/>
                 <Button
                     style={{width: 100}}
                 >

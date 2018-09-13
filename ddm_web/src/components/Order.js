@@ -44,7 +44,7 @@ class Order extends Component {
         console.log('data type is: ' + this.state.orderDetail.Peripheral_Sensor);
         console.log(typeof this.state.orderDetail.Peripheral_Sensor);
 
-        var data_type = this.state.orderDetail.Peripheral_Sensor; // 坑爹啊！！！！！！！草他妈的！！！！var !!!
+        let data_type = this.state.orderDetail.Peripheral_Sensor; // 坑爹啊！！！！！！！草他妈的！！！！var !!!
         //const data_type = 'gas';
         const k = 3;
         const data = [];
@@ -72,18 +72,19 @@ class Order extends Component {
 
         ws.onclose =  ()=> {
             const blob = new Blob([data.join("\n")], {type: 'text/plain'});
-            const message = "Please check " + data_type + ".txt" + " in your downloads folder!";
-            console.log(message);
+            // const message = "Please check " + data_type + ".txt" + " in your downloads folder!";
+            // console.log(message);
             saveAs(blob, data_type + '.txt');
-            const obj = {
-                description: message,
-                url: ''
-            };
+
+            // const obj = {
+            //     description: message,
+            //     url: ''
+            // };
             //const arr = [...this.state.details, message];
-            const arr = [...this.state.details, obj];
-            this.setState({details: arr});
-            console.log(this.state.details.length);
-            if (this.state.details.length  === this.state.quantity / 3 + 2) {
+            // const arr = [...this.state.details, obj];
+            // this.setState({details: arr});
+            // console.log(this.state.details.length);
+            if (this.state.details.length  === parseInt(this.state.quantity / 3) + 1) {
                 this.setState({
                     iconLoading: false,
                     display: 'Buy Again!'
@@ -124,7 +125,7 @@ class Order extends Component {
                 const arr = [...this.state.details, obj];
                 this.setState({details: arr});
                 console.log(this.state.details.length);
-                if (this.state.details.length === this.state.quantity / 3 + 2) {
+                if (this.state.details.length === parseInt(this.state.quantity / 3) + 1) {
                     this.setState({
                         iconLoading: false,
                         display: 'Buy Again!'
