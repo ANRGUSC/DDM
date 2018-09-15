@@ -11,6 +11,10 @@ It is still under development, we have just released the Version 1.0.
 * Python (>=3.4)
     * [websockets](https://websockets.readthedocs.io/en/stable/intro.html)
     * [pyota](https://github.com/iotaledger/iota.lib.py)
+* NPM
+    * [web3](https://github.com/ethereum/web3.js/)
+    * [iota](https://github.com/iotaledger/iota.js)
+    * [file-saver](https://www.npmjs.com/package/file-saver)
 
 ## Instructions
 - git clone https://github.com/ANRGUSC/DDM.git
