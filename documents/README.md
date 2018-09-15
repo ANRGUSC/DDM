@@ -1,0 +1,1 @@
+This was an invited paper at The 1<sup>st</sup> International Workshop on BLockchain Enabled Sustainable Smart Cities (BLESS 2018), Kansas City, MO, USA, Sept. 19, 2018, held in conjunction with the 4th IEEE Annual International Smart Cities Conference (ISC2 2018).
