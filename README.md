@@ -15,6 +15,7 @@ It is still under development, we have just released the Version 1.0.
     * [web3](https://github.com/ethereum/web3.js/)
     * [iota](https://github.com/iotaledger/iota.js)
     * [file-saver](https://www.npmjs.com/package/file-saver)
+* Install metamask browser extension
 
 ## Instructions
 - git clone https://github.com/ANRGUSC/DDM.git
