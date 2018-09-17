@@ -1,3 +1,5 @@
+'use strict';
+
 var assert = require("assert"),
     sprintfjs = require("../src/sprintf.js"),
     sprintf = sprintfjs.sprintf,
@@ -27,6 +29,31 @@ describe("sprintfjs", function() {
         assert.equal("FF", sprintf("%X", 255))
         assert.equal("Polly wants a cracker", sprintf("%2$s %3$s a %1$s", "cracker", "Polly", "wants"))
         assert.equal("Hello world!", sprintf("Hello %(who)s!", {"who": "world"}))
+        assert.equal("true", sprintf("%t", true))
+        assert.equal("t", sprintf("%.1t", true))
+        assert.equal("true", sprintf("%t", "true"))
+        assert.equal("true", sprintf("%t", 1))
+        assert.equal("false", sprintf("%t", false))
+        assert.equal("f", sprintf("%.1t", false))
+        assert.equal("false", sprintf("%t", ""))
+        assert.equal("false", sprintf("%t", 0))
+
+        assert.equal('undefined', sprintf('%T', undefined))
+        assert.equal('null', sprintf('%T', null))
+        assert.equal('boolean', sprintf('%T', true))
+        assert.equal('number', sprintf('%T', 42))
+        assert.equal('string', sprintf('%T', "This is a string"))
+        assert.equal('function', sprintf('%T', Math.log))
+        assert.equal('array', sprintf('%T', [1, 2, 3]))
+        assert.equal('object', sprintf('%T', {foo: 'bar'}))
+        assert.equal('regexp', sprintf('%T', /<("[^"]*"|'[^']*'|[^'">])*>/))
+
+        assert.equal('true', sprintf('%v', true))
+        assert.equal('42', sprintf('%v', 42))
+        assert.equal('This is a string', sprintf('%v', "This is a string"))
+        assert.equal('1,2,3', sprintf('%v', [1, 2, 3]))
+        assert.equal('[object Object]', sprintf('%v', {foo: 'bar'}))
+        assert.equal('/<("[^"]*"|\'[^\']*\'|[^\'">])*>/', sprintf('%v', /<("[^"]*"|'[^']*'|[^'">])*>/))
     })
 
     it("should return formated strings for complex placeholders", function() {
