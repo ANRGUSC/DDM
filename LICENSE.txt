@@ -7,6 +7,9 @@ http://anrg.usc.edu/
 
 Contributors:
 * Rahul Radhakrishnan
+* Tianbo Zong
+* Pavas Navaney
+* Winny Huang
 * Gowri Sankar Ramachandran
 * Bhaskar Krishnamachari
 
