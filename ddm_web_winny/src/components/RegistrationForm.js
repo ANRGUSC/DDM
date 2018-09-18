@@ -285,7 +285,7 @@ class RegistrationForm extends Component {
                         onChange={this.handleInputChange.bind(this, price)}
                     />
                 </FormItem>
-                <FormItem
+                {/*<FormItem
                     label='Max Data Unit'
                     {...formItemLayout}
                 >
@@ -293,7 +293,7 @@ class RegistrationForm extends Component {
                         value={this.state.data_unit}
                         onChange={this.handleInputChange.bind(this, data_unit)}
                     />
-                </FormItem>
+                </FormItem>*/}
                 <FormItem
                     label='IP Address'
                     {...formItemLayout}

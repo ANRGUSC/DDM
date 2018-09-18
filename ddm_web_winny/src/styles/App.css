@@ -86,8 +86,9 @@ Menu.Item:active{
 }
 
 .ddm{
-    width: 60%;
-    margin: 20px 200px;
+    width: 100%;
+    position: relative;
+    margin: 100px 280px;
 }
 
 .question{
@@ -145,4 +146,20 @@ button:hover{
 
 li:hover{
     background-color: #ffcc00 !important;
+}
+
+li.ant-menu-item-selected {
+    background-color: #990000 !important;
+}
+
+.ant-table-tbody > tr:hover td{
+    background: white !important;
+}
+
+.ant-layout-sider-trigger{
+    background: #990000 !important;
+}
+
+a {
+    color: #000000 !important;
 }

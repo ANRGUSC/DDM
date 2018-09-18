@@ -121,7 +121,7 @@ class Order extends Component {
                 const obj = {
                     description: mess,
                     url: "https://thetangle.org/bundle/" + success[0]["bundle"].toString()
-                }
+                };
                 const arr = [...this.state.details, obj];
                 this.setState({details: arr});
                 console.log(this.state.details.length);
@@ -183,7 +183,7 @@ class Order extends Component {
             title: 'Seller',
             key: 'Seller',
             dataIndex: 'Seller',
-            render: text => <a href="https://www.google.com">{text}</a>,
+            render: text => <span>{text}</span>,
         }, {
             title: 'Peripheral Sensor',
             key: 'Peripheral_Sensor',
@@ -192,11 +192,11 @@ class Order extends Component {
             title: 'Product Description',
             key: 'Product_Description',
             dataIndex: 'Product_Description'
-        },{
+        }/*,{
             title: 'Max Data Unit',
             key: 'Max_Data_Unit',
             dataIndex: 'Max_Data_Unit'
-        },{
+        }*/,{
             title: 'Price In USD',
             key: 'Price_In_USD',
             dataIndex: 'Price_In_USD'

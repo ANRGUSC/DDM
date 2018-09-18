@@ -40,7 +40,7 @@ def readDataFromFile(data):
     lines = []
     with open(filepath) as f:
         for i, line in enumerate(f):
-            if i > data['quantity']:
+            if i >= data['quantity']:
                 break
             lines.append(line.strip())
     return lines

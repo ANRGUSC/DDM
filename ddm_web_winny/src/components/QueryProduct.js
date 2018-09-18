@@ -153,10 +153,10 @@ class QueryProduct extends Component {
         }, {
             title: 'Price in USD',
             dataIndex: 'Price_per_Data_Unit_USD',
-        }, {
+        }/*, {
             title: 'Max Data Unit',
             dataIndex: 'Data_Unit',
-        }];
+        }*/];
 
         const data = [{
             key: '1',
