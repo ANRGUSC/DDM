@@ -26,14 +26,39 @@ A [video demo of DDM](https://www.youtube.com/watch?v=W2hnUdX-yDk?cc_load_policy
 * Install metamask browser extension
 
 ## Instructions
-- git clone https://github.com/ANRGUSC/DDM.git
-- cd DDM/
-- cd sdpp_seller/
-- python3 seller_websockets.py
-- cd ../ddm_web
+This repository has to be cloned on your machine to install Trinity.
+
+**Step 1**
+
+```
+git clone https://github.com/ANRGUSC/DDM.git
+```
+
+And then,
+
+```
+cd DDM/
+```
+
+**Step 2**
+The DDM user interface is required to sell, find, or buy data. Please follow the instructions given below to bring up the interface.
+
+```
+cd ../ddm_web
 - npm install
 - npm start
-- Open localhost:3000/ in your browser and enjoy! 
+- Open localhost:3000/ in your browser! 
+``` 
+
+**Step 3**
+A seller can register a new product using the **register product** tab by entering a product description. In addition, the seller should run the seller server by executing the following commands:
+```
+- cd sdpp_seller/
+- python3 seller_websockets.py
+```
+
+**Step 4**
+A buyer can search and buy data products using **search** tab. The user interface allows the buyer to select the data product and pay for it using the SDPP protocol.
 
 ## Contributing
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
