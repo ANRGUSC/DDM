@@ -1,11 +1,19 @@
-# Decentralized Data Marketplace(DDM)
+# Decentralized Data Marketplace (DDM)
 
-An architecture for serverless data marketplace using blockchain and other distributed ledger technologies.
+An implementation of a serverless data marketplace using blockchain and other distributed ledger technologies.
 
-It is still under development, we have just released the Version 1.0.
+This is version 1.0, DDM is still under development. 
+
+There are two main kinds of parties that would use DDM - sellers and buyers. Sellers use DDM to post descriptions of data products using IPFS and an Ethereum smart contracts, which buyers can search and browse to find data of interest to them. In the current implementation, the buyer can then use SDPP (Streaming data payment protocol) to connect to an data server hosted by the seller to get and pay for streaming data, useful for IoT applications. Currently SDPP (and hence DDM) supports payment for data using the IOTA cryptocurrency, though this could be extended to other cryptocurrencies. In principle the seller data registry could also be implemented using alternatives to IPFS and Ethereum. 
+
+The current prototype does not implement ratings, curated recommendations, or sophisticated search mechanisms, these are left to future versions.
+
+## Video Demo
+A [video demo of DDM](https://www.youtube.com/watch?v=W2hnUdX-yDk?cc_load_policy=1)
 
 ## More Reading
-[Current draft of the paper describing the idea](https://github.com/ANRGUSC/DDM/blob/master/documents/ddm.pdf)
+[Paper describing the idea](https://github.com/ANRGUSC/DDM/blob/master/documents/ddm.pdf)
+Gowri S. Ramachandran, Rahul Radhakrishnan, Bhaskar Krishnamachari, “Towards a Decentralized Data Marketplace for Smart Cities,” Invited paper at The 1st International Workshop on BLockchain Enabled Sustainable Smart Cities (BLESS 2018), Kansas City, MO, USA, Sept. 19, 2018, held in conjunction with the 4th IEEE Annual International Smart Cities Conference (ISC2 2018).
 
 ## Requirements
 * Python (>=3.4)
