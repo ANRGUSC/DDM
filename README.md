@@ -1,6 +1,6 @@
 # Decentralized Data Marketplace (DDM)
 
-This is an implementation of a serverless data marketplace using blockchain and other distributed ledger technologies.
+This is an implementation of a decentralized data marketplace using blockchain and other distributed ledger technologies.
 
 There are two sets of parties that would use DDM - sellers and buyers. Sellers use DDM to post descriptions of data products using IPFS and an Ethereum smart contracts, which buyers can search and browse to find data of interest to them. In the current implementation, the buyer can then use SDPP (Streaming data payment protocol) to connect to an data server hosted by the seller to get and pay for streaming data, useful for IoT applications. Currently SDPP (and hence DDM) supports payment for data using the IOTA cryptocurrency, though this could be extended to other cryptocurrencies. In principle the seller data registry could also be implemented using alternatives to IPFS and Ethereum. The following picture illustrates shows how DDM works: 
 
