@@ -12,8 +12,7 @@ This is version 1.0, DDM is still under development. The current prototype does 
 A [video demo of DDM](https://www.youtube.com/watch?v=W2hnUdX-yDk?cc_load_policy=1)
 
 ## More Reading
-[Paper describing the idea](https://github.com/ANRGUSC/DDM/blob/master/documents/ddm.pdf)
-Gowri S. Ramachandran, Rahul Radhakrishnan, Bhaskar Krishnamachari, “Towards a Decentralized Data Marketplace for Smart Cities,” Invited paper at The 1st International Workshop on BLockchain Enabled Sustainable Smart Cities (BLESS 2018), Kansas City, MO, USA, Sept. 19, 2018, held in conjunction with the 4th IEEE Annual International Smart Cities Conference (ISC2 2018).
+Gowri S. Ramachandran, Rahul Radhakrishnan, Bhaskar Krishnamachari, “[Towards a Decentralized Data Marketplace for Smart Cities](https://github.com/ANRGUSC/DDM/blob/master/documents/ddm.pdf),” Invited paper at The 1st International Workshop on BLockchain Enabled Sustainable Smart Cities (BLESS 2018), Kansas City, MO, USA, Sept. 19, 2018, held in conjunction with the 4th IEEE Annual International Smart Cities Conference (ISC2 2018).
 
 ## Requirements
 * Python (>=3.4)
