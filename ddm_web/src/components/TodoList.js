@@ -1,3 +1,8 @@
+/*
+   Copyright (c) 2018, Autonomous Networks Research Group. All rights reserved.
+   Read license file in main directory for more details
+*/
+
 import React, { Component } from 'react';
 import { Button } from 'antd';
 import { Input } from 'antd';
@@ -71,10 +76,8 @@ class TodoList extends Component {
     }
 
     handleItemDelete = (index)=>{
-        // immutable
-        // react 不容许我们改变state，要创建一个新的state, 覆盖原来的state
-        const list = [...this.state.list]; // copy
-        list.splice(index, 1); // 从index开始，删除1个元素
+        const list = [...this.state.list];
+        list.splice(index, 1);
         this.setState(()=>({
             list: list
         }));

@@ -1,3 +1,8 @@
+/*
+   Copyright (c) 2018, Autonomous Networks Research Group. All rights reserved.
+   Read license file in main directory for more details
+*/
+
 import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
@@ -7,21 +12,23 @@ class NavBar extends Component {
         return (
             <div>
                 <Menu
-                    theme="dark"
                     defaultSelectedKeys={['1']}
                     mode="vertical-left"
                 >
-                    <Menu.Item key="1">
+                    
+                    <Menu.Item key="1"  className="menu-button">
                         <Icon type="home" />
                         <span>Home</span>
                         <Link to ='/' />
                     </Menu.Item>
-                    <Menu.Item key="2">
+                    
+                    <Menu.Item key="2" className="menu-button">
                         <Icon type="login" />
                         <span>Register Product</span>
                         <Link to ='/register' />
                     </Menu.Item>
-                    <Menu.Item key="3">
+
+                    <Menu.Item key="3" className="menu-button">
                         <Icon type="search" />
                         <span>Search</span>
                         <Link to ='/search' />

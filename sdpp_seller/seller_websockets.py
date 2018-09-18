@@ -1,3 +1,6 @@
+# Copyright (c) 2018, Autonomous Networks Research Group. All rights reserved.
+#     Read license file in main directory for more details
+
 #!/usr/bin/env python
 
 import asyncio
@@ -7,7 +10,7 @@ import json
 import iota
 
 # Connect to the tangle
-seed = "999RAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHUL999"
+seed = ""
 client = "http://node02.iotatoken.nl:14265"
 iota_api = iota.Iota(client, seed)
 

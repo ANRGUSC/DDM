@@ -3,6 +3,8 @@
 # testing
 ddm_web/coverage
 
+ddm_web/node_modules
+
 # production
 ddm_web/build
 

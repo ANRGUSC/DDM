@@ -1,3 +1,8 @@
+/*
+   Copyright (c) 2018, Autonomous Networks Research Group. All rights reserved.
+   Read license file in main directory for more details
+*/
+
 import React, {Component} from 'react';
 import {Button, Radio, Select, Table} from 'antd';
 import Item from "./Item";
@@ -31,10 +36,8 @@ class QueryProduct extends Component {
         web3.eth.defaultAccount = account.address;
         storehash.getPastEvents("PostProducts", {fromBlock: 0, toBlock: 'latest'}).then(
             (events) => {
-                //console.log(events);
                 events.forEach((product) => {
                     let product_data = product.returnValues;
-                    //console.log(product_data["_hash_start"]);
                     let ipfs_pointer = hex2ascii(product_data["hash_start"]) + hex2ascii(product_data["hash_end"]);
                     console.log(ipfs_pointer);
 
@@ -153,9 +156,6 @@ class QueryProduct extends Component {
         }, {
             title: 'Price in USD',
             dataIndex: 'Price_per_Data_Unit_USD',
-        }, {
-            title: 'Max Data Unit',
-            dataIndex: 'Data_Unit',
         }];
 
         const data = [{
@@ -177,7 +177,7 @@ class QueryProduct extends Component {
 
 
         return (
-            <div>
+            <div className="searchform">
                 <br/><br/>
                 <Select
                     defaultValue="SDPP"
@@ -195,29 +195,27 @@ class QueryProduct extends Component {
                 >
                     Search
                 </Button>
-                {/*<div>*/}
-                    {/*<RadioGroup*/}
-                        {/*onChange={this.handleRadioSelection}*/}
-                        {/*value={this.state.selectedIndex}*/}
-                    {/*>*/}
-                        {/*{this.getItems()}*/}
-                    {/*</RadioGroup>*/}
-                {/*</div>*/}
+                
                 <br/><br/>
-                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.items_object_json}/>
+                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.items_object_json}/>   
+
                 <br/><br/>
-                <Button
-                    style={{width: 100}}
-                >
+
+        <div> 
+
+                
 
                     <Link to={{pathname: '/order', state: {item_object: this.state.items_object[this.state.selectedIndex]}}}>
+                    <Button className="checkout"
+                    style={{width: 100}}
+                >
                         Checkout
+                        </Button>
                     </Link>
 
-                    {/*<Link to={{pathname: '/order', state: dummyData}}>*/}
-                        {/*Checkout*/}
-                    {/*</Link>*/}
-                </Button>
+                
+
+                </div>
             </div>
         );
     }

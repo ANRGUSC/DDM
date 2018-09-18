@@ -1,3 +1,8 @@
+/*
+   Copyright (c) 2018, Autonomous Networks Research Group. All rights reserved.
+   Read license file in main directory for more details
+*/
+
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import Header from "./Header";

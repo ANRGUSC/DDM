@@ -1,3 +1,8 @@
+/*
+   Copyright (c) 2018, Autonomous Networks Research Group. All rights reserved.
+   Read license file in main directory for more details
+*/
+
 import React from 'react';
 import RegistrationForm from "./RegistrationForm";
 import QueryProduct from "./QueryProduct";

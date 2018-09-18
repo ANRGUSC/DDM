@@ -8,19 +8,19 @@ module.exports = function override(config, env) {
     );
     config = rewireLess.withLoaderOptions({
         modifyVars: {
-            "@primary-color": "#990000",
-            "@text-color-secondary-dark": "#990000",
+            "@primary-color": "#ffffff",
+            "@text-color-secondary-dark": "#ffffff",
 
             // dark theme
             // menu
             "@menu-dark-color": "@text-color-secondary-dark",
-            "@menu-dark-bg": "#ffcc02",
-            "@menu-dark-arrow-color": "#fff",
-            "@menu-dark-highlight-color": "#fff",
+            "@menu-dark-bg": "#ffffff",
+            "@menu-dark-arrow-color": "#ffcc00",
+            "@menu-dark-highlight-color": "#ffcc00",
             "@menu-dark-item-active-bg": "@primary-color",
-            "@menu-dark-submenu-bg": "#ffcc02",
+            "@menu-dark-submenu-bg": "#ffffff",
             // Layout
-            "@layout-sider-background": "#ffcc02"
+            "@layout-sider-background": "#ffffff"
         },
         javascriptEnabled: true,
     })(config, env);

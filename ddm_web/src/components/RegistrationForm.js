@@ -1,3 +1,8 @@
+/*
+   Copyright (c) 2018, Autonomous Networks Research Group. All rights reserved.
+   Read license file in main directory for more details
+*/
+
 import React, {Component} from 'react';
 import {Form, Input, Button, Select} from 'antd';
 import {Menu, Dropdown, Icon} from 'antd';
@@ -80,7 +85,6 @@ class RegistrationForm extends Component {
 
 
     onSubmit = async () => {
-        //event.preventDefault();
         //bring in user's metamask account address
         const account = web3.eth.accounts.privateKeyToAccount('0xC89ADA337DCDD9D9D092D582104064554DDC3A835B0D164B82E304F0DFC5F0FC');
         web3.eth.accounts.wallet.add(account);
@@ -94,7 +98,6 @@ class RegistrationForm extends Component {
         //https://github.com/ipfs/interface-ipfs-core/blob/master/SPEC/FILES.md#add
         await ipfs.add(this.state.buffer, (err, ipfsHash) => {
             console.log(err, ipfsHash);
-            //setState by setting ipfsHash to ipfsHash[0].hash
             this.setState({ipfsHash: ipfsHash[0].hash});
             // call Ethereum contract method "sendHash" and .send IPFS hash to etheruem contract
             //return the transaction hash from the ethereum contract
@@ -108,9 +111,9 @@ class RegistrationForm extends Component {
             }, (error, transactionHash) => {
                 console.log(transactionHash);
                 this.setState({transactionHash});
-            }); //storehash
-        }) //await ipfs.add
-    }; //onSubmit
+            });
+        })
+    };
 
     handleInputChange = (input, e) => {
         if (input === 'description') {
@@ -209,10 +212,10 @@ class RegistrationForm extends Component {
         const peripheral_sensor = 'peripheral_sensor';
 
         return (
-            <Form
-                className="register-form"
+            <Form className="register-form"
             >
-                <FormItem
+            <div className="left-form">
+                <FormItem 
                     label='Type'
                     {...formItemLayout}
                 >
@@ -228,11 +231,12 @@ class RegistrationForm extends Component {
                     label= 'Seller'
                     {...formItemLayout}
                 >
-                    <Input
+                    <Input 
                         value={this.state.seller}
                         onChange={this.handleInputChange.bind(this, seller)}
                     />
                 </FormItem>
+
                 <FormItem
                     label='Peripheral Sensor'
                     {...formItemLayout}
@@ -241,6 +245,7 @@ class RegistrationForm extends Component {
                         value={this.state.peripheral_sensor}
                         onChange={this.handleInputChange.bind(this, peripheral_sensor)}
                     />
+
                 </FormItem>
                 <FormItem
                     label='Description'
@@ -260,6 +265,10 @@ class RegistrationForm extends Component {
                         onChange={this.handleInputChange.bind(this, longitude)}
                     />
                 </FormItem>
+                
+                </div>
+                <div className="right-form">
+
                 <FormItem
                     label='Latitude'
                     {...formItemLayout}
@@ -269,6 +278,7 @@ class RegistrationForm extends Component {
                         onChange={this.handleInputChange.bind(this, latitude)}
                     />
                 </FormItem>
+
                 <FormItem
                     label='Price in USD'
                     {...formItemLayout}
@@ -276,15 +286,6 @@ class RegistrationForm extends Component {
                     <Input
                         value={this.state.price}
                         onChange={this.handleInputChange.bind(this, price)}
-                    />
-                </FormItem>
-                <FormItem
-                    label='Max Data Unit'
-                    {...formItemLayout}
-                >
-                    <Input
-                        value={this.state.data_unit}
-                        onChange={this.handleInputChange.bind(this, data_unit)}
                     />
                 </FormItem>
                 <FormItem
@@ -307,19 +308,14 @@ class RegistrationForm extends Component {
                     />
                 </FormItem>
 
-                <FormItem
-                    label='Seller Credentials'
-                    {...formItemLayout}
-                >
-                    <Input
-                        value={this.state.seller_credential}
-                        onChange={this.handleInputChange.bind(this, seller_credential)}
-                    />
-                </FormItem>
+                </div>
+
+                <div>
+
                 <FormItem
                     {...tailFormItemLayout}
                 >
-                    <Button
+                    <Button className="regbutton"
                         type="primary"
                         htmlType="submit"
                         onClick={this.handleBtnClick}
@@ -327,6 +323,9 @@ class RegistrationForm extends Component {
                         Register
                     </Button>
                 </FormItem>
+                
+                </div>
+
             </Form>
         );
     }

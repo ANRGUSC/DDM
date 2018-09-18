@@ -1,3 +1,8 @@
+/*
+   Copyright (c) 2018, Autonomous Networks Research Group. All rights reserved.
+   Read license file in main directory for more details
+*/
+
 .register-form {
     margin-top: 40px;
     width: 300px;
@@ -5,4 +10,11 @@
 
 .register-dropdown {
     justify-content: center;
+}
+
+.regbutton{
+	position: relative;
+	left: 23px;
+	margin-top: 75px;
+	padding: 0px 337px;
 }

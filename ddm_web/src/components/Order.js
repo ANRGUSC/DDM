@@ -1,8 +1,12 @@
+/*
+   Copyright (c) 2018, Autonomous Networks Research Group. All rights reserved.
+   Read license file in main directory for more details
+*/
+
 import React, { Component } from 'react';
 import {Button, Form, Input, InputNumber, Table, Tag } from "antd";
 import IOTA from "iota.lib.js";
 import {saveAs} from "file-saver";
-// RAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHUL9RAHUL
 const FormItem = Form.Item;
 
 class Order extends Component {
@@ -22,30 +26,21 @@ class Order extends Component {
         const JSON_parse = require('uint8array-json-parser').JSON_parse;
         const obj = JSON_parse(this.props.location.state.item_object);
 
-
-        //console.log(this.props.location.state);
         this.setState({orderDetail: obj});
 
     }
 
-    // 'Buy!' button
     handleClickBtn=()=>{
         this.setState({ iconLoading: true , display: 'Wait...'});
         this.sdppStart();
     }
 
-    // FROM Rahul
     sdppStart = () => {
-        // get from ethereum
-        //const quant = 7;
         const quant = this.state.quantity;
-        // console.log('quantity is ' + quant);
-        // get from input box
         console.log('data type is: ' + this.state.orderDetail.Peripheral_Sensor);
         console.log(typeof this.state.orderDetail.Peripheral_Sensor);
 
-        let data_type = this.state.orderDetail.Peripheral_Sensor; // 坑爹啊！！！！！！！草他妈的！！！！var !!!
-        //const data_type = 'gas';
+        let data_type = this.state.orderDetail.Peripheral_Sensor;
         const k = 3;
         const data = [];
         const ws = new WebSocket("ws://127.0.0.1:5678/");
@@ -59,9 +54,7 @@ class Order extends Component {
 
         ws.onmessage =  (event)=> {
             data.push(event.data);
-            //console.log(data);
             if (data.length % k === 0) {
-                //do IOTA operation
                 this.send1('Money paid');
             }
 
@@ -72,18 +65,8 @@ class Order extends Component {
 
         ws.onclose =  ()=> {
             const blob = new Blob([data.join("\n")], {type: 'text/plain'});
-            // const message = "Please check " + data_type + ".txt" + " in your downloads folder!";
-            // console.log(message);
             saveAs(blob, data_type + '.txt');
 
-            // const obj = {
-            //     description: message,
-            //     url: ''
-            // };
-            //const arr = [...this.state.details, message];
-            // const arr = [...this.state.details, obj];
-            // this.setState({details: arr});
-            // console.log(this.state.details.length);
             if (this.state.details.length  === parseInt(this.state.quantity / 3) + 1) {
                 this.setState({
                     iconLoading: false,
@@ -97,11 +80,8 @@ class Order extends Component {
     send1=(mess)=> {
         const iota = new IOTA({
             'provider': 'http://node02.iotatoken.nl:14265'
-            // 'provider' : 'http://node03.iotatoken.nl:15265'
         });
-        // get this input from an input text box
         const seed = this.state.seed;
-        //const seed = 'RAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHUL9RAHUL';
         const depth = 2;
         const minWeightMagnitude = 14;
         const transaction = {
@@ -121,7 +101,7 @@ class Order extends Component {
                 const obj = {
                     description: mess,
                     url: "https://thetangle.org/bundle/" + success[0]["bundle"].toString()
-                }
+                };
                 const arr = [...this.state.details, obj];
                 this.setState({details: arr});
                 console.log(this.state.details.length);
@@ -134,7 +114,7 @@ class Order extends Component {
                 }
             }
         });
-    }
+    };
 
     handleSeedChange = (e)=>{
         this.setState({
@@ -161,18 +141,18 @@ class Order extends Component {
             },
             wrapperCol: {
                 xs: {span: 24},
-                sm: {span: 16},
+                sm: {span: 8},
             },
         };
 
         const tailFormItemLayout = {
             wrapperCol: {
                 xs: {
-                    span: 24,
+                    span: 8,
                     offset: 0,
                 },
                 sm: {
-                    span: 16,
+                    span: 8,
                     offset: 8,
                 },
             },
@@ -183,7 +163,7 @@ class Order extends Component {
             title: 'Seller',
             key: 'Seller',
             dataIndex: 'Seller',
-            render: text => <a href="https://www.google.com">{text}</a>,
+            render: text => <span>{text}</span>,
         }, {
             title: 'Peripheral Sensor',
             key: 'Peripheral_Sensor',
@@ -193,28 +173,18 @@ class Order extends Component {
             key: 'Product_Description',
             dataIndex: 'Product_Description'
         },{
-            title: 'Max Data Unit',
-            key: 'Max_Data_Unit',
-            dataIndex: 'Max_Data_Unit'
-        },{
             title: 'Price In USD',
             key: 'Price_In_USD',
             dataIndex: 'Price_In_USD'
         }];
 
         const data = [{
-            // key: '1',
-            // name: 'John Brown',
-            // age: 32,
-            // address: 'New York No. 1 Lake Park'
-
             key: '1',
             Seller: this.state.orderDetail.Seller,
             Peripheral_Sensor: this.state.orderDetail.Peripheral_Sensor,
             Product_Description: this.state.orderDetail.Product_Description,
             Price_In_USD: this.state.orderDetail.Price_per_Data_Unit_USD,
             Max_Data_Unit: this.state.orderDetail.Data_Unit,
-            //test_field: obj.latitude
         }];
 
         // transaction details
@@ -230,61 +200,29 @@ class Order extends Component {
         }];
 
         const data2 = [{
-            // key: '1',
-            // name: 'John Brown',
-            // age: 32,
-            // address: 'New York No. 1 Lake Park'
-
             key: '1',
             Seller: this.state.orderDetail.Seller,
             Peripheral_Sensor: this.state.orderDetail.Peripheral_Sensor,
             Product_Description: this.state.orderDetail.Product_Description,
             Price_In_USD: this.state.orderDetail.Price_per_Data_Unit_USD,
             Max_Data_Unit: this.state.orderDetail.Data_Unit,
-            //test_field: obj.latitude
         }];
 
         const data1 = this.state.details;
 
         return (
-            <div>
+            <div className="orderform">
                 <br/><br/>
                 <Table columns={columns} dataSource={data} />
                 <Form>
                     <br/><br/>
-                    {/*<FormItem>
-                        <div>
-                            Seller: {this.state.orderDetail.Seller},
-                        </div>
-                        <div>
-                            Peripheral_Sensor: {this.state.orderDetail.Peripheral_Sensor},
-                        </div>
-                        <div>
-                            Product_Description: {this.state.orderDetail.Product_Description},
-                        </div>
-                        <div>
-                            Longitude: {this.state.orderDetail.Longitude},
-                        </div>
-                        <div>
-                            Latitude: {this.state.orderDetail.Latitude},
-                        </div>
-                        <div>
-                            Price_per_Data_Unit_USD: {this.state.orderDetail.Price_per_Data_Unit_USD},
-                        </div>
-                        <div>
-                            Data_Unit: {this.state.orderDetail.Data_Unit},
-                        </div>
-                        <div>
-                            IP_Address: {this.state.orderDetail.IP_Address},
-                        </div>
-                        <div>
-                            Public_Address: {this.state.orderDetail.Public_Address},
-                        </div>
-                        <div>
-                            Seller_Credentials: {this.state.orderDetail.Seller_Credentials}
-                        </div>
-                    </FormItem>*/}
-                    <FormItem
+
+                    <div className="seedform">
+
+                    </div>
+
+            
+                    <FormItem className="seedquantity"
                         label={(<span>Seed&nbsp;</span>)}
                         {...formItemLayout}
                     >
@@ -293,7 +231,8 @@ class Order extends Component {
                             onChange={this.handleSeedChange}
                         />
                     </FormItem>
-                    <FormItem
+
+                    <FormItem className="seedquantity"
                         label={(<span>Quantity&nbsp;</span>)}
                         {...formItemLayout}
                     >
@@ -302,10 +241,14 @@ class Order extends Component {
                             min={1} max={100} defaultValue={1}
                         />
                     </FormItem>
+    
+
                     <FormItem
                         {...tailFormItemLayout}
                     >
-                        <Button
+                        
+
+                        <Button className="buybutton"
                             type="primary"
                             icon="shopping-cart"
                             loading={this.state.iconLoading}
@@ -314,16 +257,8 @@ class Order extends Component {
                             {this.state.display}
                         </Button>
                     </FormItem>
-                    {/*<ul>
-                        {this.state.details.map((item, index)=>{
-                            return (
-                                <div>
-                                    {item}
-                                </div>
-                            )
-                        })}
-                    </ul>*/}
-                    <Table columns={columns1} dataSource={this.state.details} />
+
+                    <Table className="buytable" columns={columns1} dataSource={this.state.details} />
                 </Form>
 
             </div>
