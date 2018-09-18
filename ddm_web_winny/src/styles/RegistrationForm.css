@@ -1,0 +1,30 @@
+.register-form {
+    margin-top: 40px;
+    width: 300px;
+}
+
+.register-dropdown {
+    justify-content: center;
+}
+
+/*Input:hover{
+	background-color: #ffcc00;
+	border: none;
+}
+
+Input:visited{
+	background-color: #ffcc00;
+	border: none;
+}
+
+Select:hover{
+	background-color: #ffcc00;
+	border: none;
+}*/
+
+.regbutton{
+	position: relative;
+	left: 23px;
+	margin-top: 35px;
+	padding: 0px 337px;
+}
