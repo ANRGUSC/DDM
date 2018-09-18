@@ -45,7 +45,7 @@ cd DDM/
 The DDM user interface is required to sell, find, or buy data. Please follow the instructions given below to bring up the interface.
 
 ```
-- cd ../ddm_web
+- cd ddm_web/
 - npm install
 - npm start
 - Open localhost:3000/ in your browser! 
@@ -56,7 +56,7 @@ The DDM user interface is required to sell, find, or buy data. Please follow the
 A seller can register a new product using the **register product** tab by entering a product description. In addition, the seller should run the seller server by executing the following commands:
 
 ```
-- cd sdpp_seller/
+- cd ../sdpp_seller/
 - python3 seller_websockets.py
 ```
 
