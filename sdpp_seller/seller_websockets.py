@@ -4,10 +4,11 @@
 #!/usr/bin/env python
 
 import asyncio
-import random
-import websockets
 import json
+import random
+
 import iota
+import websockets
 
 # Connect to the tangle
 seed = ""
@@ -15,7 +16,9 @@ client = "http://node02.iotatoken.nl:14265"
 iota_api = iota.Iota(client, seed)
 
 # TODO receive it from the buyer
-payment_address = iota.Address('RFQASBVGDTTPDEYVSPIWHG9YUMHAGHFDUZVVXEMDRNNMWJHQYBWHXWQ9JST9NZFBFMFPPFETFLE9RMUJCTNXFZJDGW')
+payment_address = iota.Address(
+    'RFQASBVGDTTPDEYVSPIWHG9YUMHAGHFDUZVVXEMDRNNMWJHQYBWHXWQ9JST9NZFBFMFPPFETFLE9RMUJCTNXFZJDGW')
+
 
 def sendTransaction(transaction):
     try:
@@ -24,6 +27,7 @@ def sendTransaction(transaction):
         print("Invoice - " + url)
     except iota.adapter.BadApiResponse as error:
         print(error)
+
 
 def prepareTransaction(message=None, value=0):
     transaction = iota.ProposedTransaction(
@@ -37,7 +41,8 @@ def prepareTransaction(message=None, value=0):
 
     return sendTransaction(transaction)
 
-def readDataFromFile(data):
+
+def read_data_from_file(data):
     data_type = data['type']
     filepath = "actual_data/" + data_type + ".txt"
     lines = []
@@ -48,22 +53,23 @@ def readDataFromFile(data):
             lines.append(line.strip())
     return lines
 
+
 async def time(websocket, path):
     print("Data Transfer starts!")
     while True:
         data = await websocket.recv()
-        data = readDataFromFile(json.loads(data))
+        data = read_data_from_file(json.loads(data))
         print(data)
         k = 3
         counter = 1
         for d in data:
-            if counter%k == 0:
+            if counter % k == 0:
                 prepareTransaction()
             await websocket.send(d)
             counter = counter + 1
         print("Data Transfer completed!\n\n")
         break
-        #await asyncio.sleep(random.random() * 3)
+        # await asyncio.sleep(random.random() * 3)
 
 
 start_server = websockets.serve(time, '127.0.0.1', 5678)
