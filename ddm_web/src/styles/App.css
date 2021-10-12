@@ -3,168 +3,159 @@
    Read license file in main directory for more details
 */
 
-@import './RegistrationForm.css';
-@import './Main.css';
+@import "./RegistrationForm.css";
+@import "./Main.css";
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 .App-logo {
-    height: 80px;
-    float: left;
-    position: relative;
-    margin: 10px;
+  height: 80px;
+  float: left;
+  position: relative;
+  margin: 10px;
 }
 
 .App-header {
-    background-color: #fff;
-    height: 100px;
-    width: 100%;
-    color: #000;
+  background-color: #fff;
+  height: 100px;
+  width: 100%;
+  color: #000;
 }
 
 .App-top-header {
-
-    background:  #000;
-    height:      60px;
-    position:    fixed;
-    top:         0px;
-    width:       100%;
+  background: #000;
+  height: 60px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }
 
 .App-title {
-    font-size: 2.5em;
-    color: #000;
-    padding-top: 25px;
-    float: left;
+  font-size: 2.5em;
+  color: #000;
+  padding-top: 25px;
+  float: left;
 }
 
 .App-intro {
-    font-size: large;
+  font-size: large;
 }
 
-.home-description{
-    padding: 50px;
-    margin-top: 10px;
-    width: 100%;
-    /*font-size:1.2em;*/
-
+.home-description {
+  padding: 50px;
+  margin-top: 10px;
+  width: 100%;
 }
 
-.navBar{
-    background-color: #fff !important;
+.navBar {
+  background-color: #fff !important;
 }
 
-.main{
-    text-align: left;
-    float: left;
-    position: absolute;
+.main {
+  text-align: left;
+  float: left;
+  position: absolute;
 }
 
-.menu-button:hover{
-    background-color: #ffcc00 !important;
-    color: #000;
-    font-weight: bold;
-} 
-
-/*.menu-button:active{
-    background-color: #990000 !important;
-}*/
-
-Menu.Item:active{
-        background-color: #990000 !important;
+.menu-button:hover {
+  background-color: #ffcc00 !important;
+  color: #000;
+  font-weight: bold;
 }
 
-.left-form{
-    position: absolute;
-    left: 100px;
-    width: 100%;
-    margin-top: 50px;
-    font-size: 2em;
+Menu.Item:active {
+  background-color: #990000 !important;
 }
 
-.right-form{
-    /*background-color: blue;*/
-    position: relative;
-    left: 550px;
-    margin-top: 50px;
+.left-form {
+  position: absolute;
+  left: 100px;
+  width: 100%;
+  margin-top: 50px;
+  font-size: 2em;
 }
 
-.ddm{
-    width: 100%;
-    position: relative;
-    margin: 100px 280px;
+.right-form {
+  position: relative;
+  left: 550px;
+  margin-top: 50px;
 }
 
-.question{
-    margin: 20px;
+.ddm {
+  width: 100%;
+  position: relative;
+  margin: 100px 280px;
 }
 
-.searchform{
-    margin-left: 50px;
+.question {
+  margin: 20px;
 }
 
-
-.checkout{
-    background-color: #990000 !important;
-    margin-bottom:25px;
-    color: #fff !important;
+.searchform {
+  margin-left: 50px;
 }
 
-button{
-    background-color: #990000 !important;
-    border: 1px solid #990000 !important;
+.checkout {
+  background-color: #990000 !important;
+  margin-bottom: 25px;
+  color: #fff !important;
 }
 
-button:hover{
-    background-color: #ffcc00 !important;
-    color: black !important;
-    border: 1px solid #ffcc00 !important;
+button {
+  background-color: #990000 !important;
+  border: 1px solid #990000 !important;
 }
 
-.orderform{
-    margin: 0px 80px;
-    width: 800px;
-    position: relative;
+button:hover {
+  background-color: #ffcc00 !important;
+  color: black !important;
+  border: 1px solid #ffcc00 !important;
 }
 
-.seedform{
-    position: absolute;
+.orderform {
+  margin: 0px 80px;
+  width: 800px;
+  position: relative;
 }
 
-.seedquantity{
-    position: relative;
-    top: -40px;
+.seedform {
+  position: absolute;
 }
 
-.buybutton{
-    position: relative;
-    top: -40px;
-    left: -75px;
-    padding: 0px 150px;
+.seedquantity {
+  position: relative;
+  top: -40px;
 }
 
-.buytable{
-    top:-30px;
-    position: relative;
+.buybutton {
+  position: relative;
+  top: -40px;
+  left: -75px;
+  padding: 0px 150px;
 }
 
-li:hover{
-    background-color: #ffcc00 !important;
+.buytable {
+  top: -30px;
+  position: relative;
+}
+
+li:hover {
+  background-color: #ffcc00 !important;
 }
 
 li.ant-menu-item-selected {
-    background-color: #990000 !important;
+  background-color: #990000 !important;
 }
 
-.ant-table-tbody > tr:hover td{
-    background: white !important;
+.ant-table-tbody > tr:hover td {
+  background: white !important;
 }
 
-.ant-layout-sider-trigger{
-    background: #990000 !important;
+.ant-layout-sider-trigger {
+  background: #990000 !important;
 }
 
 a {
-    color: #000000 !important;
+  color: #000000 !important;
 }

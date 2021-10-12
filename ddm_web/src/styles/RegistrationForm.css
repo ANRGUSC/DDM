@@ -4,17 +4,17 @@
 */
 
 .register-form {
-    margin-top: 40px;
-    width: 300px;
+  margin-top: 40px;
+  width: 300px;
 }
 
 .register-dropdown {
-    justify-content: center;
+  justify-content: center;
 }
 
-.regbutton{
-	position: relative;
-	left: 23px;
-	margin-top: 75px;
-	padding: 0px 337px;
+.regbutton {
+  position: relative;
+  left: 23px;
+  margin-top: 75px;
+  padding: 0px 337px;
 }
